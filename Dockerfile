@@ -12,8 +12,14 @@ bash \
   gnupg \
   make \
   openssh-client \
+  py3-pip \
+  python3-dev \
+  shadow \
+  sudo \
   tree \
   wget
+
+RUN ln -sf python3 /usr/bin/python
 
 # dojo helper script
 ENV DOJO_VERSION=0.11.0
@@ -60,10 +66,18 @@ COPY image/etc_dojo.d/scripts/* /etc/dojo.d/scripts/
 COPY image/inputrc /etc/inputrc
 
 # jekyll
+ENV GEM_HOME=/home/dojo/.bundle
 ENV BUNDLE_PATH=/home/dojo/.bundle
+ENV BUNDLE_BIN=/home/dojo/bin
+ENV PATH=/home/dojo/bin:$PATH
+
+RUN mkdir -p /home/dojo/.bundle /home/dojo/bin
+RUN chown -R dojo:dojo /home/dojo/.bundle /home/dojo/bin
+
+COPY image/Gemfile /home/dojo/Gemfile
+COPY image/Gemfile.lock /home/dojo/Gemfile.lock
 RUN gem install bundler
-RUN bundle install
-RUN choown -R dojo:dojo /home/dojo/.bundle
+RUN cd /home/dojo && bundle install
 
 
 ENTRYPOINT ["/usr/bin/entrypoint.sh"]
