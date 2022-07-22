@@ -1,0 +1,13 @@
+.*
+!.gitignore
+!.github
+!.tool-versions
+imagerc*
+releaser
+docker-ops
+Dojofile.to_be_tested*
+Dojofile.example
+.terraform*
+*.png
+ops/
+test_dojo_work
