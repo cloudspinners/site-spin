@@ -31,7 +31,7 @@ RUN git clone --depth 1 -b ${DOJO_VERSION} \
 # awscli
 RUN apk add gcompat
 ENV AWS_CLI_VERSION=2.1.39
-ENV CPU_ARCH=x86_64
+ENV CPU_ARCH=aarch64
 COPY image/aws.gpg /opt/aws.gpg
 # TODO: Figure out how to support x86_64 and aarch64 with multi-cpu architecture support
 RUN curl -sL \
@@ -79,6 +79,7 @@ COPY image/Gemfile.lock /home/dojo/Gemfile.lock
 RUN gem install bundler
 RUN cd /home/dojo && bundle install
 
+EXPOSE 4000
 
 ENTRYPOINT ["/usr/bin/entrypoint.sh"]
 CMD ["/bin/bash"]

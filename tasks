@@ -34,7 +34,8 @@ image_name="kiefm/jekyll-dojo"
 image_registry="dockerhub"
 image_dir="./"
 imagerc_filename="./image/imagerc"
-docker_build_options="--platform linux/amd64 --build-arg EXTERNAL_VERSION_NUMBER=local"
+docker_build_options="--build-arg EXTERNAL_VERSION_NUMBER=local"
+# docker_build_options="--platform linux/amd64 --build-arg EXTERNAL_VERSION_NUMBER=local"
 
 function docker_login {
   if [ -n "$DOCKERHUB_TOKEN" ]; then

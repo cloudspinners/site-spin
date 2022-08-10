@@ -13,6 +13,7 @@ Create a Dojofile:
 
 ```
 DOJO_DOCKER_IMAGE="kiefm/jekyll-dojo:latest"
+DOJO_DOCKER_OPTIONS="-p 4000:4000"
 ```
 
 By default, the current directory in the docker instance is `/dojo/work`.
