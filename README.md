@@ -31,6 +31,11 @@ Usage:
 Change into the project folder. Make sure it has a Dojofile. Then run 'dojo' to download and start the image. You should end up on a prompt, where you can run commands.
 
 
+But first (assuming you're using Colima), you need to have started colima with the command `colima start --network-address`, so it can expose the port.
+
+If you run the jekyll server, you should be able to connect to http://localhost:4000
+
+
 ## How to make changes to and build this Dojo image
 
 Set up docker hub so the image can be built and published.
