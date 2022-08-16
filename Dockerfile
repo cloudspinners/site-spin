@@ -14,7 +14,6 @@ bash \
   openssh-client \
   py3-pip \
   python3-dev \
-  ripgrep \
   shadow \
   sudo \
   tree \
@@ -79,6 +78,9 @@ COPY image/Gemfile /home/dojo/Gemfile
 COPY image/Gemfile.lock /home/dojo/Gemfile.lock
 RUN gem install bundler
 RUN cd /home/dojo && bundle install
+
+COPY test/  /home/dojo/test/
+RUN chown -R dojo:dojo /home/dojo/test
 
 EXPOSE 4000
 
