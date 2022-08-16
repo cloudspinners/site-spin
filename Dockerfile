@@ -14,6 +14,7 @@ bash \
   openssh-client \
   py3-pip \
   python3-dev \
+  ripgrep \
   shadow \
   sudo \
   tree \
