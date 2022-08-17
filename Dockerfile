@@ -51,18 +51,18 @@ ENV AWS_CLI_VERSION=2.1.39
 ENV CPU_ARCH=x86_64
 COPY image/aws.gpg /opt/aws.gpg
 # TODO: Figure out how to support x86_64 and aarch64 with multi-cpu architecture support
-RUN curl -sL \
+RUN cd /tmp && \
+  curl -sL \
     https://awscli.amazonaws.com/awscli-exe-linux-${CPU_ARCH}-${AWS_CLI_VERSION}.zip.sig \
     -o awscliv2.sig && \
   curl -sL "https://awscli.amazonaws.com/awscli-exe-linux-${CPU_ARCH}-${AWS_CLI_VERSION}.zip" \
     -o "awscliv2.zip" && \
   gpg --import /opt/aws.gpg && \
   gpg --verify awscliv2.sig awscliv2.zip && \
-  unzip awscliv2.zip
-RUN pwd && ls -alF ./aws
-RUN tree
-RUN  ./aws/install && \
-  rm -rf awscliv2.zip
+  unzip -q awscliv2.zip
+RUN cd /tmp && pwd && ls -alF ./aws ./aws/dist
+RUN cd /tmp && ./aws/install
+RUN rm -rf /tmp/awscliv2.zip /tmp/aws
 RUN uname -a
 RUN aws --version
 
