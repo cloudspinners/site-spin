@@ -1,8 +1,8 @@
-# jekyll-dojo
+# site-spin
 
 This project builds a docker image that you can use with the [dojo](https://github.com/kudulab/dojo) tool to have a consistent local development environment for working with Jekyll sites.
 
-Tested and released images are published to dockerhub as [kiefm/jekyll-dojo](https://hub.docker.com/r/kiefm/jekyll-dojo)
+Tested and released images are published to dockerhub as [kiefm/site-spin](https://hub.docker.com/r/kiefm/site-spin)
 
 
 # How-to guides
@@ -12,7 +12,7 @@ Tested and released images are published to dockerhub as [kiefm/jekyll-dojo](htt
 Create a Dojofile:
 
 ```
-DOJO_DOCKER_IMAGE="kiefm/jekyll-dojo:latest"
+DOJO_DOCKER_IMAGE="kiefm/site-spin:latest"
 DOJO_DOCKER_OPTIONS="-p 4000:4000"
 ```
 

@@ -30,7 +30,7 @@ if [[ ! -f $SECRET_OPS_TAR_FILE ]];then
 fi
 source $SECRET_OPS_FILE
 
-image_name="kiefm/jekyll-dojo"
+image_name="kiefm/site-spin"
 image_registry="dockerhub"
 image_dir="./"
 imagerc_filename="./image/imagerc"

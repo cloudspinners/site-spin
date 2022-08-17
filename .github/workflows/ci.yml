@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 env:
-  TEST_TAG: kiefm/jekyll-dojo:test
+  TEST_TAG: kiefm/site-spin:test
   VERSION_NUMBER: _unset_
 
 jobs:
@@ -66,4 +66,4 @@ jobs:
           platforms: linux/aarch64
           push: true
           build-args: EXTERNAL_VERSION_NUMBER=${{ env.VERSION_NUMBER }}
-          tags: kiefm/jekyll-dojo:latest
+          tags: kiefm/site-spin:latest
