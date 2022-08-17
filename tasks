@@ -34,8 +34,8 @@ image_name="kiefm/site-spin"
 image_registry="dockerhub"
 image_dir="./"
 imagerc_filename="./image/imagerc"
-docker_build_options="--build-arg EXTERNAL_VERSION_NUMBER=local"
-# docker_build_options="--platform linux/amd64 --build-arg EXTERNAL_VERSION_NUMBER=local"
+# docker_build_options="--build-arg EXTERNAL_VERSION_NUMBER=local"
+docker_build_options="--platform linux/amd64 --build-arg EXTERNAL_VERSION_NUMBER=local"
 
 function docker_login {
   if [ -n "$DOCKERHUB_TOKEN" ]; then
@@ -86,10 +86,10 @@ case "${command}" in
       docker_ops::push "${image_dir}" "${imagerc_filename}"
       ;;
   itest)
-      time bats "$(pwd)/test/integration/end_user"
+      time bats "$(pwd)/test/from_outside"
       ;;
   self_test)
-      dojo -c ./Dojofile.to_be_tested "time bats /opt/spin-dojo/test"
+      dojo -c ./Dojofile.to_be_tested "time bats /opt/site-spin/test"
       ;;
   example)
       docker_ops::ensure_pulled_image "${image_dir}" "${imagerc_filename}"

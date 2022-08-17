@@ -1,6 +1,8 @@
+NOTE: This isn't in a publicly viable state yet, a lot of the dependencies are still private, and less than half-baked.
+
 # site-spin
 
-This project builds a docker image that you can use with the [dojo](https://github.com/kudulab/dojo) tool to have a consistent local development environment for working with Jekyll sites.
+This project builds a docker image that you can use with the [dojo](https://github.com/kudulab/dojo) tool to build and manage static website content locally using Jekyll, and publish to websites using the [website-stack](https://github.com/kief/website-stack) tool.
 
 Tested and released images are published to dockerhub as [kiefm/site-spin](https://hub.docker.com/r/kiefm/site-spin)
 
