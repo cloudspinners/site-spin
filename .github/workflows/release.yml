@@ -58,7 +58,7 @@ jobs:
           echo "DOJO_WORK_OUTER=./test/integration/test_dojo_work" >> ./Dojofile.to_be_tested
           ./bin/dojo --docker-options="--platform linux/aarch64" \
             -c ./Dojofile.to_be_tested \
-            "time bats /opt/spin-dojo/test"
+            "time bats /opt/site-spin/test"
       -
         name: Build and push
         uses: docker/build-push-action@v3

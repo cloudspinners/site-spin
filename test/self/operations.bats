@@ -28,14 +28,13 @@ load "/opt/bats-assert/load.bash"
   assert_output --partial "git version"
   assert_equal "$status" 0
 }
-@test "aws config directory is copied from identity directory" {
-  run cat /home/dojo/.aws/config
-  echo "output: $output"
-  assert_output --partial "region"
-  assert_equal "$status" 0
-}
 @test "AWS CLI runs" {
   run aws --version
+  echo "output: $output"
+  assert_equal "$status" 0
+}
+@test "jekyll runs" {
+  run jekyll --version
   echo "output: $output"
   assert_equal "$status" 0
 }
