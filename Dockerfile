@@ -58,8 +58,10 @@ RUN curl -sL \
     -o "awscliv2.zip" && \
   gpg --import /opt/aws.gpg && \
   gpg --verify awscliv2.sig awscliv2.zip && \
-  unzip awscliv2.zip && \
-  ./aws/install && \
+  unzip awscliv2.zip
+RUN pwd && ls -alF ./aws
+RUN tree
+RUN  ./aws/install && \
   rm -rf awscliv2.zip
 RUN uname -a
 RUN aws --version
