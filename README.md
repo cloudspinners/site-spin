@@ -25,7 +25,7 @@ The following guides are needed:
 - As a developer, I want to work on the site-spin codebase, so I can contribute changes to the project
 
 
-## HOW TO: Prerequisites for the other how tos.
+## HOW TO: Prerequisites for the other how-tos.
 
 1. Docker. I use colima to install it on my Mac. Make sure you're running it to expose network ports (with colima, start it with the command  `colima start --network-address`).
 2. [Dojo](https://github.com/kudulab/dojo) (I install it on my Mac with homebrew)
@@ -43,11 +43,11 @@ git clone the project repo.
 
 ### 2. Edit, build, and preview the site
 
-Aside from adding, editing, and viewing the content files, here are commands for working locally:
+Aside from adding, editing, and viewing the content files using your favourite tools, the toolset includes several commands for working locally with the content. Run these at the dojo prompt:
 
-|| build | Generate the static website with published content only
-|| preview | Generate the website including unpublished content and host it locally on http://localhost:4000
-|| ready | Generage the website with published content only and host it locally on http://localhost:4000
+|| site-spin build | Generate the static website with published content only
+|| site-spin preview | Generate the website including unpublished content and host it locally on http://localhost:4000
+|| site-spin ready | Generage the website with published content only and host it locally on http://localhost:4000
 || jekyll <commands> | Run jekyll commands
 
 
@@ -55,13 +55,13 @@ When you're happy with the content, you will normally commit and push the code, 
 
 Build stage:
 
-|| build | Generate the static website with published content only
-|| package | Prepare the static website files for publication, giving them a version number. Ideally, this is an "immutable" package, in that the content isn't changed for different instance of the site. (In practice, jekyll may expect to build it differently depending on the URL?)
-|| upload | Upload the versioned website content package to a repository so it can be published to website instances (environments).
+|| site-spin build | Generate the static website with published content only
+|| site-spin package | Prepare the static website files for publication, giving them a version number. Ideally, this is an "immutable" package, in that the content isn't changed for different instance of the site. (In practice, jekyll may expect to build it differently depending on the URL?)
+|| site-spin upload | Upload the versioned website content package to a repository so it can be published to website instances (environments).
 
 Publication stages:
 
-|| publish | Synchronize a versioned website content package to a website instance (environment), hosted on AWS infrastructure managed with [website-stack](https://github.com/kief/website-stack). In practice, this is an S3 bucket, so doesn't necessarily need to be created with website-stack.
+|| site-spin publish | Synchronize a versioned website content package to a website instance (environment), hosted on AWS infrastructure managed with [website-stack](https://github.com/kief/website-stack). In practice, this is an S3 bucket, so doesn't necessarily need to be created with website-stack.
 
 
 

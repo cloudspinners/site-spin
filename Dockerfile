@@ -82,6 +82,13 @@ RUN uname -a
 # RUN rm -rf /tmp/awscliv2.zip /tmp/aws
 
 
+# Install spin tool binaries and scripts
+RUN mkdir -p /opt/spin-tools/bin
+COPY image/bin/ /opt/spin-tools/bin/
+RUN for binary in /opt/spin-tools/bin/* ; do ln -s $binary /usr/local/bin/ ; done
+ENV SPIN_BIN_DIR=/usr/local/bin
+
+
 # BATS testing tool
 ENV BATS_CORE_VERSION=1.7.0
 ENV BATS_HELPER_DIR=/opt

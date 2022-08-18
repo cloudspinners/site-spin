@@ -1,0 +1,118 @@
+#!/usr/bin/env sh
+
+set -euo pipefail
+
+ME=`basename $0`
+MYFULL=`readlink -f $0`
+MYDIR=`dirname $MYFULL`
+
+warn()
+{
+  >&2 echo "[$ME] WARN: $*"
+}
+
+fail()
+{
+  >&2 echo "[$ME] FAIL: $*"
+  exit 1
+}
+
+info()
+{
+  >&2 echo "[$ME] INFO: $*"
+}
+
+print_help()
+{
+  cat <<ENDOFHELP
+
+USAGE:
+  $ME build     Generate the static website with published content only
+  $ME preview   Generate the website including unpublished content and host it locally on http://localhost:4000
+  $ME ready     Generage the website with published content only and host it locally on http://localhost:4000
+  $ME build     Generate the static website with published content only
+  $ME package   Prepare the static website files for publication, giving them a version number
+  $ME upload    Upload the versioned website content package to a repository so it can be published to website instances
+  $ME publish   Synchronize a versioned website content package to a website instance (environment)
+  $ME help      Print this help and exit
+ENDOFHELP
+}
+
+ALREADY_RAN_THIS=no
+
+work_dir()
+{
+  if [ ${ALREADY_RAN_THIS-} = "no" ] ; then
+    [ -d ./content ] || fail "Folder ./content doesn't exist"
+    cd ./content
+    ALREADY_RAN_THIS=yes
+  fi
+}
+
+do_build()
+{
+  work_dir
+  jekyll build
+}
+
+do_preview()
+{
+  work_dir
+  jekyll serve --host=0.0.0.0 --watch --unpublished
+}
+
+do_ready()
+{
+  work_dir
+  jekyll serve --host=0.0.0.0 --watch
+}
+
+do_package()
+{
+  fail "packaging not implemented yet"
+}
+
+do_upload()
+{
+  fail "uploading not implemented yet"
+}
+
+do_publish()
+{
+  fail "publishing not implemented yet"
+}
+
+
+
+if [ "$#" -eq 0 ] ; then
+  print_help
+  fail "No command given"
+fi
+
+command=$1
+shift
+
+case "$command" in
+  build)
+    do_build
+    ;;
+  preview)
+    ;;
+  ready)
+    ;;
+  package)
+    ;;
+  upload)
+    ;;
+  publish)
+    ;;
+  help)
+    print_help
+    ;;
+  *)
+    print_help
+    fail "Unknown argument: $command"
+  ;;
+esac
+
+

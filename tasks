@@ -84,10 +84,7 @@ case "${command}" in
       ./tasks build_local
       docker_ops::push "${image_dir}" "${imagerc_filename}"
       ;;
-  itest)
-      time bats "$(pwd)/test/from_outside"
-      ;;
-  self_test)
+  test)
       dojo -c ./Dojofile.to_be_tested "time bats /opt/site-spin/test"
       ;;
   example)
