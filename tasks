@@ -58,7 +58,6 @@ prepare_test_dojofile()
   echo "Test image: ${KUDU_DOCKER_IMAGE_URL}"
   echo "DOJO_DOCKER_IMAGE=\"${KUDU_DOCKER_IMAGE_URL}\"" > ./Dojofile.to_be_tested
   echo "DOJO_IDENTITY_OUTER=\"$(pwd)/test/_tmp/identities/\"" >> ./Dojofile.to_be_tested
-  echo "DOJO_WORK_OUTER=$(pwd)/test/_tmp/test_dojo_work" >> ./Dojofile.to_be_tested
   echo "DOJO_DOCKER_OPTIONS=\"--platform linux/amd64 --build-arg EXTERNAL_VERSION_NUMBER=local\""
 }
 

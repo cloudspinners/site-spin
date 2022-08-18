@@ -63,7 +63,7 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v3
         with:
-          platforms: linux/aarch64
+          platforms: linux/amd64
           push: true
           build-args: EXTERNAL_VERSION_NUMBER=${{ env.VERSION_NUMBER }}
           tags: |
