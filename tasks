@@ -57,6 +57,7 @@ prepare_test_dojofile()
   # Should make this conditional
   echo "Test image: ${KUDU_DOCKER_IMAGE_URL}"
   echo "DOJO_DOCKER_IMAGE=\"${KUDU_DOCKER_IMAGE_URL}\"" > ./Dojofile.to_be_tested
+  echo "DOJO_DOCKER_OPTIONS=\"-p 4000:4000\"" >> ./Dojofile.to_be_tested
   echo "DOJO_IDENTITY_OUTER=\"$(pwd)/test/_tmp/identities/\"" >> ./Dojofile.to_be_tested
   echo "DOJO_DOCKER_OPTIONS=\"--platform linux/amd64 --build-arg EXTERNAL_VERSION_NUMBER=local\""
 }

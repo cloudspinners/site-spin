@@ -43,7 +43,7 @@ git clone the project repo.
 
 ### 2. Edit, build, and preview the site
 
-Aside from adding, editing, and viewing the content files using your favourite tools, the toolset includes several commands for working locally with the content. Run these at the dojo prompt:
+Aside from adding, editing, and viewing the content files using your favourite tools, the toolset includes several commands for working locally with the content. Run the command `site-spin`, which is included in the docker/dojo image, at the dojo prompt, with the relevant subcommand:
 
 || site-spin build | Generate the static website with published content only
 || site-spin preview | Generate the website including unpublished content and host it locally on http://localhost:4000
@@ -71,10 +71,12 @@ Follow the prerequisites first.
 
 ### 1. Create a project for the website content project
 
-Make it a github project. Make a folder called `content`.
+Make it a github project.
+
+I recommend putting the content, and the Dojofile described in the next step, in a subfolder (e.g. `./content`), so other folders can be used for environment configuration and whatnot.
 
 
-### 2. Create a Dojofile in the root of the project folder
+### 2. Create a Dojofile in the content folder
 
 ```
 DOJO_DOCKER_IMAGE="kiefm/site-spin:latest"
@@ -86,7 +88,7 @@ Run `dojo`, which should download the site-spin docker image and run an instance
 
 ### 3. Set up the website
 
-This is jekyll stuff. Best to do this in the `content` subfolder, so other folders can be used for environment configuration and other stuff.
+This is jekyll stuff.
 
 
 

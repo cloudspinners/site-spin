@@ -38,32 +38,18 @@ USAGE:
 ENDOFHELP
 }
 
-ALREADY_RAN_THIS=no
-
-work_dir()
-{
-  if [ ${ALREADY_RAN_THIS-} = "no" ] ; then
-    [ -d ./content ] || fail "Folder ./content doesn't exist"
-    cd ./content
-    ALREADY_RAN_THIS=yes
-  fi
-}
-
 do_build()
 {
-  work_dir
   jekyll build
 }
 
 do_preview()
 {
-  work_dir
   jekyll serve --host=0.0.0.0 --watch --unpublished
 }
 
 do_ready()
 {
-  work_dir
   jekyll serve --host=0.0.0.0 --watch
 }
 
@@ -97,14 +83,19 @@ case "$command" in
     do_build
     ;;
   preview)
+    do_preview
     ;;
   ready)
+    do_ready
     ;;
   package)
+    do_package
     ;;
   upload)
+    do_upload
     ;;
   publish)
+    do_publish
     ;;
   help)
     print_help
