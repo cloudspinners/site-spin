@@ -28,11 +28,11 @@ load "/opt/bats-assert/load.bash"
   assert_output --partial "git version"
   assert_equal "$status" 0
 }
-@test "AWS CLI runs" {
-  run aws --version
-  echo "output: $output"
-  assert_equal "$status" 0
-}
+# @test "AWS CLI runs" {
+#   run aws --version
+#   echo "output: $output"
+#   assert_equal "$status" 0
+# }
 @test "jekyll runs" {
   run jekyll --version
   echo "output: $output"

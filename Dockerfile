@@ -45,6 +45,21 @@ COPY image/etc_dojo.d/scripts/* /etc/dojo.d/scripts/
 COPY image/inputrc /etc/inputrc
 
 
+# jekyll
+ENV GEM_HOME=/home/dojo/.bundle
+ENV BUNDLE_PATH=/home/dojo/.bundle
+ENV BUNDLE_BIN=/home/dojo/bin
+ENV PATH=/home/dojo/bin:$PATH
+
+RUN mkdir -p /home/dojo/.bundle /home/dojo/bin
+RUN chown -R dojo:dojo /home/dojo/.bundle /home/dojo/bin
+
+COPY image/Gemfile /home/dojo/Gemfile
+COPY image/Gemfile.lock /home/dojo/Gemfile.lock
+RUN gem install bundler
+RUN cd /home/dojo && bundle install
+
+
 # awscli
 RUN apk add gcompat
 ENV AWS_CLI_VERSION=2.1.39
@@ -62,23 +77,10 @@ RUN cd /tmp && \
   unzip -q awscliv2.zip
 RUN cd /tmp && pwd && ls -alF ./aws ./aws/dist
 RUN cd /tmp && ./aws/install
-RUN rm -rf /tmp/awscliv2.zip /tmp/aws
 RUN uname -a
-RUN aws --version
+# RUN aws --version
+# RUN rm -rf /tmp/awscliv2.zip /tmp/aws
 
-# jekyll
-ENV GEM_HOME=/home/dojo/.bundle
-ENV BUNDLE_PATH=/home/dojo/.bundle
-ENV BUNDLE_BIN=/home/dojo/bin
-ENV PATH=/home/dojo/bin:$PATH
-
-RUN mkdir -p /home/dojo/.bundle /home/dojo/bin
-RUN chown -R dojo:dojo /home/dojo/.bundle /home/dojo/bin
-
-COPY image/Gemfile /home/dojo/Gemfile
-COPY image/Gemfile.lock /home/dojo/Gemfile.lock
-RUN gem install bundler
-RUN cd /home/dojo && bundle install
 
 # BATS testing tool
 ENV BATS_CORE_VERSION=1.7.0

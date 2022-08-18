@@ -54,8 +54,8 @@ jobs:
         name: Test
         run: |
           echo "DOJO_DOCKER_IMAGE=${{ env.TEST_TAG }}" > ./Dojofile.to_be_tested
-          echo "DOJO_IDENTITY_OUTER=./test/integration/identities/full" >> ./Dojofile.to_be_tested
-          echo "DOJO_WORK_OUTER=./test/integration/test_dojo_work" >> ./Dojofile.to_be_tested
+          echo "DOJO_IDENTITY_OUTER=./test/_tmp/identities/full" >> ./Dojofile.to_be_tested
+          echo "DOJO_WORK_OUTER=./test/_tmp/test_dojo_work" >> ./Dojofile.to_be_tested
           ./bin/dojo --docker-options="--platform linux/aarch64" \
             -c ./Dojofile.to_be_tested \
             "time bats /opt/site-spin/test"

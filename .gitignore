@@ -2,6 +2,7 @@
 !.gitignore
 !.github
 !.tool-versions
+!.gitkeep
 imagerc*
 releaser
 docker-ops
