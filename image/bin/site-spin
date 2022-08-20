@@ -22,7 +22,7 @@ info()
   >&2 echo "[$ME] INFO: $*"
 }
 
-print_help()
+print_usage()
 {
   cat <<ENDOFHELP
 
@@ -71,7 +71,7 @@ do_publish()
 
 
 if [ "$#" -eq 0 ] ; then
-  print_help
+  print_usage
   fail "No command given"
 fi
 
@@ -98,10 +98,10 @@ case "$command" in
     do_publish
     ;;
   help)
-    print_help
+    print_usage
     ;;
   *)
-    print_help
+    print_usage
     fail "Unknown argument: $command"
   ;;
 esac
